@@ -74,6 +74,22 @@ body {
   color: #328C8D;
 }
 
+.Home {
+  padding-top: 5%;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.About {
+  padding-top: 5%;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .Experience {
   padding-top: 5%;
   margin: 20px;
@@ -96,4 +112,15 @@ body {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section_headers {
+  font-family: 'Courier New', monospace;
+  font-size: 25px;
+}
+
+p {
+  font-family: 'Courier New', monospace;
+  font-size: 18px;
+  line-height: 1.6;
 }
