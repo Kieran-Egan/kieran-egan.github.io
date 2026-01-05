@@ -124,3 +124,10 @@ p {
   font-size: 18px;
   line-height: 1.6;
 }
+
+.footer {
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: #f1f1f1;
+}

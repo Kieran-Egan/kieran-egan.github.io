@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="socials.css" />
+  <script src="script.js"></script>
+  <title>Bestbooks</title>
+</head>
+<body>
+  <main class="wrap">
+    <article class="post" data-post>
+      <header class="post__header">
+        <img class="avatar" alt="Profile avatar" src="profile_photo.jpg" />
+        <div class="meta">
+          <div class="meta__row">
+            <div class="name">
+              <span>Kieran Egan</span>
+              <span class="badge" aria-label="Verified">Verified</span>
+            </div>
+          </div>
+          <div class="sub">
+            <span>@itskieranegan</span><span class="dot">•</span>
+            <time datetime="2025-12-13T10:15:00-06:00">Dec 13, 2025</time><span class="dot">•</span>
+            <span>Public</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="post__text" data-post-text>
+        My first post!
+      </div>
+
+      <section class="media" aria-label="Post media">
+        <div class="media__viewport" data-viewport>
+          <figure class="media__item">
+            <img alt="Sample media 1" src="first_post.png" />
+          </figure>
+        </div>
+      </section>
+
+      <div class="stats" aria-label="Engagement stats">
+        <div><strong data-like-count>0</strong> likes</div>
+        <div>
+          <strong data-comment-count>0</strong> comments
+          <span class="dot">•</span>
+          <strong data-share-count>0</strong> shares
+        </div>
+      </div>
+
+      <footer class="actions" aria-label="Post actions">
+        <div class="btnrow">
+          <button class="btn like" data-like aria-pressed="false">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12.1 21.35 10 19.28C5.4 14.86 2 11.78 2 8.28 2 5.5 4.2 3.35 6.95 3.35c1.56 0 3.06.73 4.05 1.88.99-1.15 2.49-1.88 4.05-1.88C17.8 3.35 20 5.5 20 8.28c0 3.5-3.4 6.58-8 11l-.9 2.07z"/>
+            </svg>
+            Like
+          </button>
+
+          <button class="btn" data-comment>
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M4 4h16v12H5.17L4 17.17V4zm2 2v8.34L6.83 14H18V6H6z"/>
+            </svg>
+            Comment
+          </button>
+
+          <button class="btn" data-share>
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.02-4.11A2.99 2.99 0 0 0 18 7.91a3 3 0 1 0-3-3c0 .24.04.47.09.7L8.07 9.72A3 3 0 1 0 6 15a2.99 2.99 0 0 0 2.07-.83l7.02 4.11c-.05.2-.09.42-.09.65a3 3 0 1 0 3-2.85z"/>
+            </svg>
+            Share
+          </button>
+        </div>
+
+        <div class="btnrow">
+          <button class="btn" data-save aria-pressed="false">
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6 2h12a2 2 0 0 1 2 2v18l-8-4-8 4V4a2 2 0 0 1 2-2z"/>
+            </svg>
+            Save
+          </button>
+
+          <button class="btn" data-copy>
+            <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M16 1H4a2 2 0 0 0-2 2v12h2V3h12V1zm4 4H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2zm0 16H8V7h12v14z"/>
+            </svg>
+            Copy link
+          </button>
+        </div>
+      </footer>
+
+      <section class="composer" aria-label="Add a comment">
+        <div class="field" role="group" aria-label="Comment field">
+          <label class="sr-only" for="commentBox">Write a comment</label>
+          <textarea id="commentBox" rows="1" placeholder="Write a comment…" data-input></textarea>
+        </div>
+        <button class="send" data-send disabled>Post</button>
+      </section>
+    </article>
+  </main>
+</body>
+</html>
