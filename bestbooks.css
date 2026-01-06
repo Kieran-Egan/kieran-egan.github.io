@@ -1,0 +1,38 @@
+.flip-card {
+  perspective: 1000px;
+  position: relative;
+  overflow: hidden;      /* keeps text inside rounded card */
+  min-height: 400px;     /* ensures room for image + text */
+  overflow: hidden;
+}
+
+.flip-inner {
+  position: absolute;    /* fill the card */
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.flip-card:hover .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  display: flex;         /* allow column layout inside face */
+  flex-direction: column;
+  background-color: #ffffff;   /* opaque white */
+  border-radius: inherit;
+}
+
+.flip-back {
+    transform: rotateY(180deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flip-inner { transition: none; }
+  .flip-card:hover .flip-inner { transform: none; }
+}

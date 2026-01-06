@@ -1,0 +1,101 @@
+[
+    {
+    "cover": "9781328869333.jpg",
+    "title": "1984",
+    "link": "https://ravenbookstore.com/book/9781328869333",
+    "status": "read",
+    "note": "This is a cool book.",
+    "started_reading":"2024-05-01",
+    "finished_reading":"2024-05-10"
+    },
+    {
+    "cover": "9780060850524.jpg",
+    "title": "Brave New World",
+    "link": "https://example.com/brave-new-world",
+    "status": "read",
+    "note": "This is a cool book.",
+    "started_reading":"2024-05-01",
+    "finished_reading":"2024-05-10"
+    },
+    {
+    "cover": "9781338878967.jpg",
+    "title": "Harry Potter and the Order of the Phoenix",
+    "link": "https://ravenbookstore.com/book/9781338878967",
+    "status": "read",
+    "note": "This is a cool book.",
+    "started_reading":"2024-05-01",
+    "finished_reading":"2024-05-10"
+    },
+    {
+    "cover": "9781338878950.jpg",
+    "title": "Harry Potter and the Goblet of Fire",
+    "link": "https://ravenbookstore.com/book/9781338878950",
+    "status": "read",
+    "note": "This is a cool book.",
+    "started_reading":"2024-05-01",
+    "finished_reading":"2024-05-10"
+    },
+    {
+    "cover": "9781338878943.jpg",
+    "title": "Harry Potter and the Prisoner of Azkaban",
+    "link": "https://ravenbookstore.com/book/9781338878943",
+    "status": "read",
+    "note": "This is a cool book.",
+    "started_reading":"2024-05-01",
+    "finished_reading":"2024-05-10"
+    },
+    {
+    "cover": "9781338878936.jpg",
+    "title": "Harry Potter and the Chamber of Secrets",
+    "link": "https://ravenbookstore.com/book/9781338878936",
+    "status": "read",
+    "note": "This is a cool book.",
+    "started_reading":"2024-05-01",
+    "finished_reading":"2024-05-10"
+    },
+    {
+    "cover": "9781338878929.jpg",
+    "title": "Harry Potter and the Sorcerer's Stone",
+    "link": "https://ravenbookstore.com/book/9781338878929",
+    "status": "read",
+    "note": "This is a cool book.",
+    "started_reading":"2024-05-01",
+    "finished_reading":"2024-05-10"
+    },
+    {
+    "cover": "61965263.jpg",
+    "title": "Quantum Supremacy",
+    "link": "https://ravenbookstore.com/book/61965263",
+    "status": "read",
+    "note": "This is a cool book.",
+    "started_reading":"2024-05-01",
+    "finished_reading":"2024-05-10"
+    },
+    {
+    "cover": "9780142437254.jpg",
+    "title": "On the Road",
+    "link": "https://ravenbookstore.com/book/9780142437254",
+    "status": "reading",
+    "note": "This is a cool book.",
+    "started_reading":"2024-05-01",
+    "finished_reading":"2024-05-10"
+    },
+        {
+    "cover": "9780394747231.jpg",
+    "title": "Maus",
+    "link": "https://ravenbookstore.com/book/9780394747231",
+    "status": "reading",
+    "note": "This is a cool book.",
+    "started_reading":"2024-05-01",
+    "finished_reading":"2024-05-10"
+    },
+    {
+    "cover": "40672036.jpg",
+    "title": "Digital Minimalism",
+    "link": "https://ravenbookstore.com/book/40672036",
+    "status": "to-read",
+    "note": "This is a cool book.",
+    "started_reading":"2024-05-01",
+    "finished_reading":"2024-05-10"
+    }
+]
