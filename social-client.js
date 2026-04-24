@@ -27,7 +27,14 @@ class SocialApp {
   setupUI() {
     const userDisplay = document.getElementById('userDisplay');
     userDisplay.innerHTML = `
-      <img class="avatar-small" src="${this.currentUser.avatar}" alt="${this.currentUser.username}">
+      <div class="avatar-trigger" id="avatarTrigger" title="Change profile photo">
+        <img class="avatar-small" id="headerAvatar" src="${this.currentUser.avatar}" alt="${this.currentUser.username}">
+        <div class="avatar-trigger__overlay">
+          <svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor">
+            <path d="M12 15.2A3.2 3.2 0 0 1 8.8 12 3.2 3.2 0 0 1 12 8.8 3.2 3.2 0 0 1 15.2 12 3.2 3.2 0 0 1 12 15.2M9 2L7.17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-3.17L15 2H9Z"/>
+          </svg>
+        </div>
+      </div>
       <span>${this.currentUser.username}</span>
       ${this.currentUser.isAdmin ? '<span class="admin-badge">Admin</span>' : ''}
     `;
@@ -72,6 +79,14 @@ class SocialApp {
       document.getElementById('removeImageBtn').addEventListener('click', () => this.clearImage());
     }
 
+    // Avatar upload
+    const avatarTrigger = document.getElementById('avatarTrigger');
+    const avatarInput = document.getElementById('avatarInput');
+    if (avatarTrigger) {
+      avatarTrigger.addEventListener('click', () => avatarInput.click());
+      avatarInput.addEventListener('change', (e) => this.uploadAvatar(e));
+    }
+
     // Modal close
     document.querySelectorAll('.modal__close').forEach(btn => {
       btn.addEventListener('click', (e) => e.target.closest('.modal').setAttribute('hidden', ''));
@@ -106,6 +121,55 @@ class SocialApp {
     document.getElementById('imagePreview').style.display = 'none';
     document.getElementById('previewImg').src = '';
     this.updatePublishBtn();
+  }
+
+  async uploadAvatar(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const trigger = document.getElementById('avatarTrigger');
+    trigger.style.opacity = '0.5';
+    trigger.style.pointerEvents = 'none';
+
+    try {
+      const formData = new FormData();
+      formData.append('avatar', file);
+
+      const res = await fetch(`${API_URL}/api/profile/avatar`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${this.token}` },
+        body: formData
+      });
+
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || 'Upload failed');
+      }
+
+      const updated = await res.json();
+      this.currentUser.avatar = updated.avatar;
+      localStorage.setItem('user', JSON.stringify(this.currentUser));
+
+      // Refresh header avatar and composer avatar
+      document.getElementById('headerAvatar').src = updated.avatar;
+      const composerAvatar = document.getElementById('composerAvatar');
+      if (composerAvatar) composerAvatar.src = updated.avatar;
+
+      // Refresh any posts by this user already on screen
+      document.querySelectorAll('.post').forEach(postEl => {
+        const postId = parseInt(postEl.dataset.postId);
+        const post = this.posts.find(p => p.id === postId);
+        if (post && post.author.id === this.currentUser.id) {
+          postEl.querySelector('.avatar').src = updated.avatar;
+        }
+      });
+    } catch (err) {
+      alert('Failed to update photo: ' + err.message);
+    } finally {
+      trigger.style.opacity = '';
+      trigger.style.pointerEvents = '';
+      e.target.value = '';
+    }
   }
 
   async publishPost() {

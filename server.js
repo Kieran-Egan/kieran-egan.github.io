@@ -15,9 +15,16 @@ if (!process.env.JWT_SECRET) {
   console.warn('WARNING: JWT_SECRET is not set. Using insecure default. Set it before going to production.');
 }
 
-// Uploads directory
+// Uploads directories
 const UPLOADS_DIR = path.join(__dirname, 'uploads');
+const AVATARS_DIR = path.join(UPLOADS_DIR, 'avatars');
 if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR);
+if (!fs.existsSync(AVATARS_DIR)) fs.mkdirSync(AVATARS_DIR);
+
+const imageFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith('image/')) cb(null, true);
+  else cb(new Error('Only image files are allowed'));
+};
 
 const upload = multer({
   storage: multer.diskStorage({
@@ -27,11 +34,20 @@ const upload = multer({
       cb(null, `${Date.now()}${ext}`);
     }
   }),
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10 MB
-  fileFilter: (req, file, cb) => {
-    if (file.mimetype.startsWith('image/')) cb(null, true);
-    else cb(new Error('Only image files are allowed'));
-  }
+  limits: { fileSize: 10 * 1024 * 1024 },
+  fileFilter: imageFilter
+});
+
+const avatarUpload = multer({
+  storage: multer.diskStorage({
+    destination: AVATARS_DIR,
+    filename: (req, file, cb) => {
+      const ext = path.extname(file.originalname).toLowerCase();
+      cb(null, `user-${req.userId}${ext}`);
+    }
+  }),
+  limits: { fileSize: 5 * 1024 * 1024 },
+  fileFilter: imageFilter
 });
 
 // Middleware
@@ -367,6 +383,29 @@ app.post('/api/books', verifyToken, verifyAdmin, (req, res) => {
 app.post('/api/upload', verifyToken, verifyAdmin, upload.single('image'), (req, res) => {
   if (!req.file) return res.status(400).json({ error: 'No image provided' });
   res.json({ url: `/uploads/${req.file.filename}` });
+});
+
+// Routes: Profile
+
+app.post('/api/profile/avatar', verifyToken, avatarUpload.single('avatar'), (req, res) => {
+  if (!req.file) return res.status(400).json({ error: 'No image provided' });
+
+  const users = readDB(USERS_FILE, []);
+  const idx = users.findIndex(u => u.id === req.userId);
+  if (idx === -1) return res.status(404).json({ error: 'User not found' });
+
+  // Delete old avatar file if it was a local upload
+  const oldAvatar = users[idx].avatar;
+  if (oldAvatar && oldAvatar.startsWith('/uploads/avatars/')) {
+    const oldPath = path.join(__dirname, oldAvatar);
+    if (fs.existsSync(oldPath)) fs.unlinkSync(oldPath);
+  }
+
+  users[idx].avatar = `/uploads/avatars/${req.file.filename}`;
+  writeDB(USERS_FILE, users);
+
+  const u = users[idx];
+  res.json({ id: u.id, username: u.username, email: u.email, avatar: u.avatar, isAdmin: u.isAdmin });
 });
 
 // Health check

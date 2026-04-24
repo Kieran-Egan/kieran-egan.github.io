@@ -81,6 +81,28 @@ body {
   border: 2px solid var(--border);
 }
 
+.avatar-trigger {
+  position: relative;
+  cursor: pointer;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.avatar-trigger__overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.15s;
+  color: white;
+}
+
+.avatar-trigger:hover .avatar-trigger__overlay { opacity: 1; }
+
 .admin-badge {
   background: linear-gradient(135deg, #f59e0b, #fbbf24);
   color: #78350f;
