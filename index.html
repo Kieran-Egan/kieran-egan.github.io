@@ -1,110 +1,164 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>kieran egan</title>
-        <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-        <link rel="stylesheet" type="text/css" href="styles.css" />
-    </head>
-    <body>
-        <nav class="navbar">
-            <a> Kieran F. Egan</a>
-            <ul class="menu">
-                <li class="item"><a class="active" href="#Home">Home</a></li>
-                <li class="item"><a href="#About">About</a></li>
-                <li class="item"><a href="#Experience">Experience</a></li>
-                <li class="item"><a href="#Research">Research </a></li>
-                <li class="item"><a href="#Personal">Personal </a></li>
-            </ul>
-        </nav>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kieran Egan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-        <center>
+  <nav class="navbar">
+    <a class="navbar__name" href="#home">Kieran<span>.</span>dev</a>
+    <ul class="navbar__links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+    </ul>
+  </nav>
 
-        <!-- Home -->
+  <div class="page">
 
-        <div id="Home" class="Home">
-            <div class="section_headers">
-                <div>
-                    <h2>Home</h2>
-                </div>
-            </div>
+    <!-- Hero -->
+    <section id="home" class="hero">
+      <img class="hero__photo" src="profile_photo.jpg" alt="Kieran Egan">
+      <div class="hero__text">
+        <p class="hero__greeting">Hello, I'm</p>
+        <h1 class="hero__name">Kieran Egan</h1>
+        <p class="hero__tagline">
+          Master's student at the University of Wisconsin–Madison. Previously researched
+          FPGA applications for quantum information processing at the University of Kansas.
+        </p>
+        <div class="hero__links">
+          <a href="Egan_Kieran_CV.pdf" download class="btn-primary">Download CV</a>
+          <a href="https://scholar.google.com/citations?user=3u3bDaIAAAAJ&hl=en"
+             target="_blank" rel="noopener" class="btn-secondary">Google Scholar</a>
+          <a href="social.html" class="btn-secondary">Social</a>
         </div>
+      </div>
+    </section>
 
-        <!-- About -->
+    <!-- About -->
+    <section id="about" class="section">
+      <p class="section__label">About me</p>
+      <h2 class="section__title">Background</h2>
+      <div class="section__body">
+        <p>
+          Born and raised in St. Louis, I attended Metro Academic and Classical High School,
+          earning both an IB and a high school diploma. I completed my undergraduate degree
+          in computer engineering at the University of Kansas, and I'm now a Master's student
+          at the University of Wisconsin–Madison.
+        </p>
+        <p>
+          As an undergrad I spent over a year in the KU Advanced, Reconfigurable, and Quantum
+          Computing (KUARQ) Research Group under Dr. Esam El-Araby, working on FPGA applications
+          for quantum information processing.
+        </p>
+        <p>
+          Outside the lab I enjoy soccer, running, reading, going on walks with my girlfriend
+          Iris, and exploring Kansas City. Feel free to reach out if you'd like to connect!
+        </p>
+      </div>
+    </section>
 
-        <div id="About" class="About">
-            <div class="section_headers">
-                <h2>About</h2>
-                <div>
-                    <p>Hey! My name is Kieran Egan. Born and raised in St. Louis, I attended Metro Academic and Classical High School, where I earned both an IB and a high school diploma. 
-                        I am currently a senior studying computer engineering at the University of Kansas. For the past year and a half, I have been working under the supervision of Dr. Esam 
-                        El-Araby in the KU Advanced, Reconfigurable, and Quantum Computing (KUARQ) Research Group. My research focuses on FPGA applications for quantum information processing. 
-                        In my free time, I enjoy playing soccer, running, reading, going on walks with my girlfriend, Iris, and exploring Kansas City.
+    <!-- Research -->
+    <section id="research" class="section">
+      <p class="section__label">Academia</p>
+      <h2 class="section__title">Research</h2>
 
-                    </p>
-                    <p>Feel free to explore my website to learn more about my experience, research interests, and personal life. If you have any questions or would like to connect, please don't hesitate to reach out!</p>
-                </div>
-            </div>
+      <!-- Graduate -->
+      <div class="research-era">
+        <div class="research-era__header">
+          <span class="research-era__badge">Graduate</span>
+          <span class="research-era__school">University of Wisconsin–Madison</span>
         </div>
-
-        <!-- Experience -->
-
-            <div id="Experience" class="Experience">
-                <div class="section_headers">
-                    <h2>Experience</h2>
-                    <div>
-                        <object 
-                            class="pdf" 
-                            data="Egan_Kieran_CV.pdf"
-                            width="600"
-                            height="1000">
-                        </object>
-                    </div>
-                    <a href="Egan_Kieran_CV.pdf" download="Egan_Kieran_CV">Download my CV</a>
-                </div>
-            </div>
-
-        <!-- Research -->
-
-            <div id="Research" class="Research">
-                <div class="section_headers">
-                    <h2>My Research Interests</h2>
-                    <p>Quantum Computing, Quantum Information Processing, Nonlinear Optics & Integrated Photonics</p>
-                    <h3>Current Projects</h3>
-                    <p>FPGA applications for quantum information processing<p>
-                    <h3>Publications</h3>
-                    <p>For a list of my publications, please visit my <a href="https://scholar.google.com/citations?user=3u3bDaIAAAAJ&hl=en">Google Scholar profile</a>.</p>
-                </div>
-            </div>
-
-        <!-- Personal -->
-
-        <div id="Personal" class="Personal">
-            <div class="section_headers">
-            <h2>Personal</h2>
-
-            <p>Welcome to my social media—KIERAN'S FUN SOCIAL MEDIA! (Trademark pending)</p>
-            <p>We are direct competitors to Instagram, Facebook, Snapchat, Tiktok, and everything else. We will IPO soon, so get ready!</p>
-            <p>Still under development, but here's the link if you want to explore:</p>
-            <a href="social.html">Link</a>
-
-            <p>Welcome to Bestbooks, which has now been decoupled from Amazon's Goodreads</p>
-            <p>Still under development, but here's the link if you want to explore:</p>
-            <a href="bestbooks.html">Link</a>
-
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-            </div>
+        <div class="section__body" style="margin-bottom: 16px;">
+          <p>
+            Currently pursuing my Master's degree at UW–Madison, where my research expands
+            into new directions in computing and engineering. Details to come as the program progresses.
+          </p>
         </div>
+      </div>
 
-        <div class="footer">
-            <footer>
-                <p>© 2025 Kieran Egan. All rights reserved.</p>
-            </footer>
+      <!-- Undergraduate -->
+      <div class="research-era">
+        <div class="research-era__header">
+          <span class="research-era__badge research-era__badge--secondary">Undergraduate</span>
+          <span class="research-era__school">University of Kansas · KUARQ Lab</span>
         </div>
+        <div class="section__body" style="margin-bottom: 16px;">
+          <p>
+            Worked under Dr. Esam El-Araby in the KU Advanced, Reconfigurable, and Quantum
+            Computing (KUARQ) Research Group. Focused on FPGA architectures for quantum
+            information processing — bridging reconfigurable hardware with near-term quantum algorithms.
+          </p>
+        </div>
+        <div class="research-grid">
+          <div class="research-card">
+            <div class="research-card__icon">⚛️</div>
+            <div class="research-card__title">Quantum Computing</div>
+            <div class="research-card__desc">
+              Quantum information processing, quantum algorithms, and near-term quantum hardware.
+            </div>
+          </div>
+          <div class="research-card">
+            <div class="research-card__icon">📄</div>
+            <div class="research-card__title">Publications</div>
+            <div class="research-card__desc">
+              See my full list on
+              <a href="https://scholar.google.com/citations?user=3u3bDaIAAAAJ&hl=en"
+                 target="_blank" rel="noopener" style="color:var(--accent);">Google Scholar</a>.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            </center>
+    <!-- Experience -->
+    <section id="experience" class="section">
+      <p class="section__label">CV</p>
+      <h2 class="section__title">Experience</h2>
+      <div class="cv-wrapper">
+        <object data="Egan_Kieran_CV.pdf" type="application/pdf" width="100%" height="900">
+          <p>PDF viewer not available. <a href="Egan_Kieran_CV.pdf" class="cv-download">Download my CV</a>.</p>
+        </object>
+      </div>
+      <a href="Egan_Kieran_CV.pdf" download="Egan_Kieran_CV" class="cv-download">↓ Download CV</a>
+    </section>
 
-    </body>
-</html> 
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <p class="section__label">Personal</p>
+      <h2 class="section__title">Projects</h2>
+      <div class="projects-grid">
+        <a href="social.html" class="project-card">
+          <div class="project-card__emoji">💬</div>
+          <div class="project-card__title">Social Feed</div>
+          <div class="project-card__desc">
+            A personal social platform — share thoughts, photos, and updates. Login to like and comment.
+          </div>
+          <span class="project-card__status">Live</span>
+        </a>
+        <a href="bestbooks.html" class="project-card">
+          <div class="project-card__emoji">📚</div>
+          <div class="project-card__title">Bestbooks</div>
+          <div class="project-card__desc">
+            My reading list and reviews — a Goodreads alternative I actually control.
+          </div>
+          <span class="project-card__status">Live</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+
+  <footer class="footer">
+    <p>© 2025 Kieran Egan · Built from scratch</p>
+  </footer>
+
+</body>
+</html>

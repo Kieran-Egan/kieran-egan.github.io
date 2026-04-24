@@ -4,6 +4,13 @@
   overflow: hidden;      /* keeps text inside rounded card */
   min-height: 400px;     /* ensures room for image + text */
   overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.flip-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.15) !important;
 }
 
 .flip-inner {
@@ -35,4 +42,121 @@
 @media (prefers-reduced-motion: reduce) {
   .flip-inner { transition: none; }
   .flip-card:hover .flip-inner { transform: none; }
+}
+
+/* Enhanced Styling */
+.card {
+  border: 1px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: #6ea8fe;
+}
+
+.progress-bar {
+  background: linear-gradient(90deg, #0d6efd, #0dcaf0);
+}
+
+/* Stats Cards */
+#statsContainer {
+  gap: 1rem;
+}
+
+#statsContainer .card {
+  border: 2px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+#statsContainer .card:hover {
+  border-color: #0d6efd;
+  transform: translateY(-2px);
+}
+
+#statsContainer .text-primary { color: #0d6efd !important; }
+#statsContainer .text-info { color: #0dcaf0 !important; }
+#statsContainer .text-success { color: #198754 !important; }
+#statsContainer .text-warning { color: #ffc107 !important; }
+
+/* Badges */
+.badge {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Filter card */
+.card-body input,
+.card-body select {
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+.card-body input:focus,
+.card-body select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Empty state */
+#emptyReading,
+#emptyToRead,
+#emptyRead {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 16px;
+}
+
+/* Modal styling */
+.modal-content {
+  border-radius: 8px;
+}
+
+.modal-header {
+  border-bottom: 1px solid #e0e0e0;
+  background: linear-gradient(135deg, #f5f7fa 0%, #f0f0f0 100%);
+}
+
+.modal-body input,
+.modal-body select,
+.modal-body textarea {
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+}
+
+.modal-body input:focus,
+.modal-body select:focus,
+.modal-body textarea:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+.form-label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .flip-card {
+    min-height: 320px;
+  }
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.row {
+  animation: slideIn 0.3s ease;
 }
