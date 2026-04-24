@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const path = require('path');
 const multer = require('multer');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -50,6 +51,13 @@ const avatarUpload = multer({
   fileFilter: imageFilter
 });
 
+const COOKIE_OPTIONS = {
+  httpOnly: true,
+  secure: process.env.NODE_ENV === 'production',
+  sameSite: 'strict',
+  maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
+};
+
 // Middleware
 const ALLOWED_ORIGINS = [
   'http://localhost:3000',
@@ -64,6 +72,7 @@ app.use(cors({
   },
   credentials: true
 }));
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use('/uploads', express.static(UPLOADS_DIR));
 app.use(express.static('.'));
@@ -116,9 +125,9 @@ const generateToken = (userId) => {
   return jwt.sign({ userId }, SECRET_KEY, { expiresIn: '7d' });
 };
 
-// Middleware: Verify token
+// Middleware: Verify token (Authorization header or cookie)
 const verifyToken = (req, res, next) => {
-  const token = req.headers.authorization?.split(' ')[1];
+  const token = req.headers.authorization?.split(' ')[1] || req.cookies?.auth_token;
   if (!token) {
     return res.status(401).json({ error: 'No token provided' });
   }
@@ -176,6 +185,7 @@ app.post('/api/register', (req, res) => {
   writeDB(USERS_FILE, users);
 
   const token = generateToken(newUser.id);
+  res.cookie('auth_token', token, COOKIE_OPTIONS);
   res.status(201).json({
     token,
     user: { id: newUser.id, username, email, avatar: newUser.avatar, isAdmin: newUser.isAdmin }
@@ -197,10 +207,16 @@ app.post('/api/login', (req, res) => {
   }
 
   const token = generateToken(user.id);
+  res.cookie('auth_token', token, COOKIE_OPTIONS);
   res.json({
     token,
     user: { id: user.id, username: user.username, email: user.email, avatar: user.avatar, isAdmin: user.isAdmin }
   });
+});
+
+app.post('/api/logout', (req, res) => {
+  res.clearCookie('auth_token', { ...COOKIE_OPTIONS, maxAge: 0 });
+  res.json({ success: true });
 });
 
 app.get('/api/me', verifyToken, (req, res) => {

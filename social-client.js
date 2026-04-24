@@ -13,12 +13,21 @@ class SocialApp {
     this.token = localStorage.getItem('token');
     const userStr = localStorage.getItem('user');
 
-    if (!this.token || !userStr) {
-      window.location.href = '/auth.html';
-      return;
+    if (userStr) {
+      this.currentUser = JSON.parse(userStr);
+    } else {
+      // No localStorage — try restoring session from cookie via /api/me
+      try {
+        const res = await fetch(`${API_URL}/api/me`, { credentials: 'include' });
+        if (!res.ok) { window.location.href = '/auth.html'; return; }
+        this.currentUser = await res.json();
+        localStorage.setItem('user', JSON.stringify(this.currentUser));
+      } catch {
+        window.location.href = '/auth.html';
+        return;
+      }
     }
 
-    this.currentUser = JSON.parse(userStr);
     this.setupUI();
     this.setupEventListeners();
     await this.loadPosts();
@@ -54,7 +63,8 @@ class SocialApp {
   }
 
   setupEventListeners() {
-    document.getElementById('logoutBtn').addEventListener('click', () => {
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+      await fetch(`${API_URL}/api/logout`, { method: 'POST', credentials: 'include' }).catch(() => {});
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.href = '/auth.html';
